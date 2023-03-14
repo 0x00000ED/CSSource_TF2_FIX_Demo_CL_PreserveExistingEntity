@@ -1,7 +1,7 @@
 [CS:Source] FIX Host_Error: CL_PreserveExistingEntity: missing client entity X on play demo
 
 # Video:
-[![Watch the video](https://img.youtube.com/vi/ZirNUpreW9A/hqdefault.jpg)](https://youtu.be/ZirNUpreW9A)
+[![Watch the video](https://img.youtube.com/vi/ZirNUpreW9A/maxresdefault.jpg)](https://youtu.be/ZirNUpreW9A)
 
 # Image:
 ![image](https://user-images.githubusercontent.com/13904504/224951488-8bd0b32c-16d0-4df9-8c16-00087ca73511.png)
