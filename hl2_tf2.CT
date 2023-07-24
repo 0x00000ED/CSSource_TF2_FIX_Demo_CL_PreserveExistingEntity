@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Host Error call"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>5</ByteLength>
+      <Address>engine.dll+9DE2E</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Host Error Fix"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+//mov eax,00000000 // block Host_Error call
+//call dword ptr[engine.dll+2D9578] // replace Host_Error call with tier0.Msg call
+call dword ptr[engine.dll+2D9584] // replace Host_Error call with tier0.Msg call
+
+jmp exit
+
+originalcode:
+call engine.dll+17AAB0
+
+exit:
+jmp returnhere
+
+"engine.dll"+9DE2E:
+jmp newmem
+returnhere:
+
+
+
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"engine.dll"+9DE2E:
+call engine.dll+17AAB0
+//Alt: db E8 7D CC 0D 00
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
