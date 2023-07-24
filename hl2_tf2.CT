@@ -25,7 +25,7 @@ newmem: //this is allocated memory, you have read,write,execute access
 //place your code here
 //mov eax,00000000 // block Host_Error call
 //call dword ptr[engine.dll+2D9578] // replace Host_Error call with tier0.Msg call
-call dword ptr[engine.dll+2D9584] // replace Host_Error call with tier0.Msg call
+call dword ptr[engine.dll+2D9584] // replace Host_Error call with tier0.Warning call
 
 jmp exit
 
