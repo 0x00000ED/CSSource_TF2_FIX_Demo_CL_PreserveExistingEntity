@@ -6,19 +6,17 @@
       <Description>"Host_Error_fix"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
-aobscanmodule(Host_Error_call,engine.dll,E8 ? ? ? ? 83 C4 08 5D C3 8B 01 5D FF 60 34)
-registersymbol(Host_Error_call)
+aobscanmodule(Host_Error_call,engine.dll,E9 ? ? ? ? 48 8B 00 48 83 C4 20 5B 48 FF 60 68)
+alloc(newmem,$1000,Host_Error_call)
 
-label(Host_Error_call_orig)
+registersymbol(Host_Error_call)
 registersymbol(Host_Error_call_orig)
 
-alloc(newmem,$1000)
-
+label(Host_Error_call_orig)
 label(return)
 
 newmem:
-  call tier0.Warning
-  jmp return
+  jmp tier0.Warning
 
 Host_Error_call_orig:
   readmem(Host_Error_call, 5)
